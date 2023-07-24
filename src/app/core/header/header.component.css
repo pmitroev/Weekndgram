@@ -1,0 +1,88 @@
+.container {
+    width: 90%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.logo {
+    position: fixed;
+    left: 45%;
+}
+
+.logo img {
+    height: 100px;
+    width: 133px;
+    top: 0;
+    align-items: center;
+}
+
+.header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 85px;
+}
+
+.menu ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    overflow: hidden;
+    text-align: right;
+}
+
+.menu ul li {
+    float: left;
+    margin: 5px;
+}
+
+.menu ul li a {
+    text-decoration: none;
+    color: #e24b00;
+    font-size: 16px;
+    line-height: 20px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 700;
+    padding: 5px 30px;
+}
+
+
+.menu ul li a:hover {
+    color: #e24b00;
+    text-decoration: underline;
+}
+
+.userbtns {
+    margin-top: 5px;
+    text-align: right;
+}
+
+.userbtns ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    overflow: hidden;
+}
+
+.userbtns ul li {
+    float: left;
+    margin: 3px;
+}
+
+.userbtns ul li a {
+    text-decoration: none;
+    background-color: #d24600;
+    color: black;
+    border-radius: 20px;
+    font-size: 16px;
+    line-height: 100px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 700;
+    padding: 5px 35px;
+    opacity: 0.7;
+    transition: 0.3s;
+}
+
+.userbtns ul li a:hover {
+    opacity: 1;
+}
