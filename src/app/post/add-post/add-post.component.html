@@ -1,9 +1,9 @@
 <div class="add-post-page">
   <div class="form">
-    <form class="add-post-form">
-      <input type="text" placeholder="Place" />
-      <input type="text" placeholder="Description" />
-      <input type="text" placeholder="ImageUrl" />
+    <form #form="ngForm" class="add-post-form" (ngSubmit)="addData(form)">
+      <input type="text" placeholder="Place" name="place" ngModel/>
+      <input type="text" placeholder="Description" name="description" ngModel/>
+      <input type="text" placeholder="ImageUrl" name="imageUrl" ngModel/>
       <button>add the post</button>
     </form>
   </div>
