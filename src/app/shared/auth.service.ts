@@ -9,6 +9,7 @@ import { getAuth } from '@angular/fire/auth';
 })
 export class AuthService {
   constructor(private fireAuth: AngularFireAuth, private router: Router) {}
+  
   //login method
   login(email: string, password: string): void {
     this.fireAuth.signInWithEmailAndPassword(email, password).then(
@@ -49,10 +50,5 @@ export class AuthService {
         alert(err.message);
       }
     );
-  }
-
-  //see if someone is loggedin method
-    get isLogged(): boolean {
-        return !!getAuth().currentUser;
   }
 }

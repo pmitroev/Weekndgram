@@ -1,11 +1,11 @@
 footer {
-    position: absolute;
+    position:fixed; /* fixed, relative */
     bottom: 0;
     width: 100%;
     height: 90px;
     text-align: center;
     padding: 1px;
-    background-color: #cb4400bc;
+    background-color: #ff5500bc;
     color: black;
     font-family: 'Roboto Condensed', sans-serif;
 }

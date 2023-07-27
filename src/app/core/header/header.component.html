@@ -12,11 +12,13 @@
       </a>
     </div>
     <div class="navsection userbtns">
-      <ul>
+      <ul *ngIf="!isLoggedIn">
         <li><a routerLink="/login">LOGIN</a></li>
         <li><a routerLink="/register">REGISTER</a></li>
-        <!-- <li><a routerLink="/profile">PROFILE</a></li>
-        <li><a (click)="logout()">LOGOUT</a></li> -->
+      </ul>
+      <ul *ngIf="isLoggedIn">
+        <li><a routerLink="/profile">PROFILE</a></li>
+        <li><a (click)="logout()">LOGOUT</a></li>
       </ul>
     </div>
   </div>

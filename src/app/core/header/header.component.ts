@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { getAuth } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/auth.service';
@@ -8,14 +8,16 @@ import { AuthService } from 'src/app/shared/auth.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent{
     constructor(private router: Router, private auth: AuthService) { }
 
+    
     logout() {
         this.auth.logout();
     }
 
+
     get isLoggedIn(): boolean {
-        return this.auth.isLogged;
+        return !!localStorage.getItem('token');
     }
 }

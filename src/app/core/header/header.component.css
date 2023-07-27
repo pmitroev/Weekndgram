@@ -5,7 +5,7 @@
 }
 
 .logo {
-    position: fixed;
+    position: sticky;
     left: 46%;
 }
 
