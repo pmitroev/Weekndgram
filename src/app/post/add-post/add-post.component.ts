@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Firestore, collection, addDoc } from '@angular/fire/firestore';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Firestore, collection, addDoc, setDoc, doc } from '@angular/fire/firestore';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 
@@ -9,12 +10,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-post.component.css'],
 })
 export class AddPostComponent {
-  constructor(private firestore: Firestore, private router: Router) {}
+  constructor(private firestore: Firestore, private router: Router, private auth: AngularFireAuth) {}
 
   addData(form: NgForm) {
+
     const postsInstance = collection(this.firestore, 'posts');
 
-    addDoc(postsInstance, form.value).then(() => {
+    addDoc(postsInstance, {...form.value, uid: localStorage.getItem('token')}).then(() => {
         this.router.navigate(['/posts'])
     })
     .catch((err) => {

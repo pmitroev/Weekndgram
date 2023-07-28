@@ -23,7 +23,7 @@ const routes: Routes = [
   {
     path: 'add-post',
     component: AddPostComponent,
-    canActivate: [AuthActivate],
+    // canActivate: [AuthActivate],
   },
 ];
 
