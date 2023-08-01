@@ -11,4 +11,16 @@ import { Router } from '@angular/router';
 })
 export class AddPostComponent {
   constructor(private firestore: Firestore, private router: Router, private auth: AngularFireAuth) {}
+
+  addData(form: NgForm) {
+
+    const postsInstance = collection(this.firestore, 'posts');
+
+    addDoc(postsInstance, {...form.value, uid: localStorage.getItem('token')}).then(() => {
+        this.router.navigate(['/posts'])
+    })
+    .catch((err) => {
+        console.log(err);
+    })
+  }
 }
