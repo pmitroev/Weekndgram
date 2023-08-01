@@ -14,14 +14,16 @@ import { environment } from '../environments/environment';
 import { provideAuth,getAuth } from '@angular/fire/auth';
 import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
-import { FIREBASE_OPTIONS } from '@angular/fire/compat'
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { NotFoundComponent } from './not-found/not-found.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
     PostsListComponent,
-    HomeComponent
+    HomeComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
