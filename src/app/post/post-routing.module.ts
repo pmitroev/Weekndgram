@@ -15,7 +15,7 @@ const routes: Routes = [
         component: MainComponent
       },
       {
-        path: ':themeId',
+        path: ':postId',
         component: CurrentPostComponent
       },
     ],
@@ -23,7 +23,7 @@ const routes: Routes = [
   {
     path: 'add-post',
     component: AddPostComponent,
-    canActivate: [AuthActivate],
+    // canActivate: [AuthActivate],
   },
 ];
 
