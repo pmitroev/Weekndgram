@@ -10,6 +10,7 @@
 
 .container {
     display: flex;
+    margin-bottom: 150px;
     flex-wrap: wrap;
     justify-content: center;
     max-width: 1200px;

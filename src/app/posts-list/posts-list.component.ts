@@ -11,27 +11,10 @@ export class PostsListComponent implements OnInit {
   constructor(private data: DataService) {}
   
   posts:any = [];
-  postId = '';
-
-  getId() {
-    this.data.getPosts().subscribe((res) => {
-        this.posts = res;
-        this.postId = this.posts.idField;
-        res.forEach((p) => {
-          return this.postId = p['id'];
-        })
-      });
-  }
 
   refreshPosts() {
     this.data.getPosts().subscribe((res) => {
       this.posts = res;
-      this.postId = this.posts.idField;
-      res.forEach((p) => {
-        this.postId = p['id'];
-        console.log(this.postId);
-      })
-      
     });
   }
 
