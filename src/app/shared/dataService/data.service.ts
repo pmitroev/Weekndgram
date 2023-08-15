@@ -28,8 +28,8 @@ export class DataService {
 
   
 
-  deleteBook(post: Post) {
-    const bookDocRef = doc(this.firestore, `posts/${post._id}`);
-    return deleteDoc(bookDocRef);
+  deletePost(post: Post) {
+    const postDocRef = doc(this.firestore, `posts/${post._id}`);
+    return deleteDoc(postDocRef);
   }
 }

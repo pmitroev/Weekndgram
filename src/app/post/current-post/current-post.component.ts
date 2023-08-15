@@ -11,9 +11,11 @@ export class CurrentPostComponent {
   constructor(private data: DataService) {}
 
   
-  deleteBook(post: Post) {
+
+  
+  deletePost(post: Post) {
     if (confirm('Are you sure to delete this record ?') == true) {
-      this.data.deleteBook(post).then(() => console.log('delete successful'));
+      this.data.deletePost(post).then(() => console.log('delete successful'));
     }
   }
 }
