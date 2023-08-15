@@ -16,8 +16,6 @@ import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { FormsModule } from '@angular/forms';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { NotFoundComponent } from './not-found/not-found.component';
-import { SearchComponent } from './search/search.component'
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +23,6 @@ import { SearchComponent } from './search/search.component'
     PostsListComponent,
     HomeComponent,
     NotFoundComponent,
-    SearchComponent
   ],
   imports: [
     BrowserModule,
