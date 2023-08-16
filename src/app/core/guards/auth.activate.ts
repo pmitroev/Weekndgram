@@ -7,11 +7,12 @@ import {
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { AuthService } from 'src/app/shared/auth.service';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 
 @Injectable({ providedIn: 'root' })
 export class AuthActivate implements CanActivate {
-  constructor(private auth: AuthService) {}
+  constructor(private auth: AuthService,) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -20,7 +21,7 @@ export class AuthActivate implements CanActivate {
     | boolean
     | UrlTree
     | Observable<boolean | UrlTree>
-    | Promise<boolean | UrlTree> {
+    | Promise<boolean | UrlTree> {  
     return this.auth.isLogged;
   }
 }
