@@ -13,7 +13,7 @@ export class HomeComponent {
   posts: any = [];
 
   onPostClick(postId: string) {
-    this.router.navigate(['post', postId])
+    this.router.navigate(['posts', postId])
   }
 
   refreshPosts() {

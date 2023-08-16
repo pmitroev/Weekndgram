@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, from } from 'rxjs'; // Import 'from' from RxJS
+import { Observable, filter, from, map } from 'rxjs'; // Import 'from' from RxJS
 import { DataService } from 'src/app/shared/dataService/data.service';
 import { Post } from 'src/app/types/post';
 
@@ -12,10 +12,9 @@ import { Post } from 'src/app/types/post';
 })
 export class CurrentPostComponent implements OnInit {
   postId: string = '';
-  post$: Observable<any> | undefined;
+  post$!: Observable<Post>;
 
   constructor(
-    private data: DataService,
     private router: ActivatedRoute
   ) {}
 
@@ -26,12 +25,28 @@ export class CurrentPostComponent implements OnInit {
 
       const db = getFirestore();
       const postRef = doc(db, 'posts', this.postId);
-      
-      // Convert the promise to an observable using 'from'
-      this.post$ = from(getDoc(postRef));
+
+      this.post$ = from(getDoc(postRef)).pipe(
+        map((documentSnapshot) => {
+          const data = documentSnapshot.data();
+          if (data) {
+            console.log(data);
+            
+            return {
+              _id: this.postId,
+              place: data['place'],
+              description: data['description'],
+              imageUrl: data['imageUrl'],
+              uid: data['uid'],
+            } as Post;
+          } else {
+            throw new Error('Document not found'); // Throw an error if document is not found
+          }
+        }),
+        filter((post) => !!post) // Filter out undefined values
+      );
     } else {
-      console.log('err');
-      
+      // Handle the case when id is not available
     }
   }
 
