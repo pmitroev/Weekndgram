@@ -1,18 +1,14 @@
-import { isNgTemplate } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import {
   Firestore,
   collection,
   collectionData,
   deleteDoc,
-  getDoc,
-  getFirestore,
   doc,
-  collectionChanges,
-  getDocs,
 } from '@angular/fire/firestore';
-import { map } from 'rxjs';
 import { Post } from 'src/app/types/post';
+
+
 
 @Injectable({
   providedIn: 'root',
@@ -25,8 +21,6 @@ export class DataService {
 
     return collectionData(postCollection, { idField: 'id' });
   }
-
-  
 
   deletePost(post: Post) {
     const postDocRef = doc(this.firestore, `posts/${post._id}`);
