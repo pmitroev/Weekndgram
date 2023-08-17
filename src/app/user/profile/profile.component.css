@@ -10,9 +10,10 @@
 
 .container {
     display: flex;
+    margin-bottom: 150px;
     flex-wrap: wrap;
     justify-content: center;
-    max-width: 1200px;
+    max-width: 1500px;
     margin-block: 2rem;
     gap: 2rem;
 }

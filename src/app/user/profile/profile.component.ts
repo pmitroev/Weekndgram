@@ -1,28 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
+import { Observable, map } from 'rxjs';
+import { DataService } from 'src/app/shared/dataService/data.service';
+import { Post } from 'src/app/types/post';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css']
+  styleUrls: ['./profile.component.css'],
 })
 export class ProfileComponent implements OnInit {
-  userId: string | undefined;
-  userPosts: Observable<any[]> | undefined;
+  posts: any = [];
+  userPosts: any = [];
+  constructor(private data: DataService, private router: Router) {}
 
-  constructor(private afAuth: AngularFireAuth) { }
+  onPostClick(postId: string) {
+    this.router.navigate(['posts', postId])
+  }
 
-  ngOnInit(): void {
-    this.afAuth.authState.subscribe(user => {
-      if (user) {
-        this.userId = user.uid;
-        // this.userPosts = this.getUserPosts();
-      }
+  refreshPosts() {
+    this.data.getPosts().subscribe((res) => {
+    this.posts = res.filter(post => post['uid'] == localStorage.getItem('token'));
     });
   }
 
-//   getUserPosts(): Observable<any[]> {
-//     return this.firestore.collection('posts', ref => ref.where('userId', '==', this.userId)).valueChanges();
-//   }
+  ngOnInit() {
+    this.refreshPosts();
+  }
 }
