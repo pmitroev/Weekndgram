@@ -20,6 +20,8 @@ export class PostsListComponent implements OnInit {
   refreshPosts() {
     this.data.getPosts().subscribe((res) => {
       this.posts = res;
+    //   console.log(res);
+      
     });
   }
 

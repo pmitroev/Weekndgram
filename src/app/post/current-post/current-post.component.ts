@@ -30,7 +30,7 @@ export class CurrentPostComponent implements OnInit {
         map((documentSnapshot) => {
           const data = documentSnapshot.data();
           if (data) {
-            console.log(data);
+            // console.log(data);
             
             return {
               _id: this.postId,

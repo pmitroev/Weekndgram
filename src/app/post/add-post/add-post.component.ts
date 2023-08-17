@@ -16,37 +16,37 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-post.component.css'],
 })
 export class AddPostComponent {
-  postForm: FormGroup;
+//   postForm: FormGroup;
 
   constructor(
     private firestore: Firestore,
     private router: Router,
     private fb: FormBuilder
   ) {
-    this.postForm = this.fb.group({
-      place: ['', Validators.required],
-      description: ['', Validators.required],
-      imageUrl: ['', [Validators.required, Validators.pattern('https?://.*')]],
-    });
+    // this.postForm = this.fb.group({
+    //   place: ['', Validators.required],
+    //   description: ['', Validators.required],
+    //   imageUrl: ['', [Validators.required, Validators.pattern('https?://.*')]],
+    // });
   }
-  place: string = '';
-  description: string = '';
-  imageUrl: string = '';
+//   place: string = '';
+//   description: string = '';
+//   imageUrl: string = '';
   addData(form: NgForm) {
-    if (this.place == '') {
-        alert('Please enter a place');
-        return;
-    }
+    // if (this.place == '') {
+    //     alert('Please enter a place');
+    //     return;
+    // }
 
-    if (this.description == '') {
-        alert('Please enter a description');
-        return;
-    }
+    // if (this.description == '') {
+    //     alert('Please enter a description');
+    //     return;
+    // }
 
-    if (this.imageUrl == '') {
-        alert('Please enter an imageUrl');
-        return;
-    }
+    // if (this.imageUrl == '') {
+    //     alert('Please enter an imageUrl');
+    //     return;
+    // }
     const postsInstance = collection(this.firestore, 'posts');
 
     addDoc(postsInstance, { ...form.value, uid: localStorage.getItem('token') })
