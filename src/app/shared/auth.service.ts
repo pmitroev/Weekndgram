@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
+import { User } from '../types/user';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
+    // user: User | undefined;
+
   constructor(private fireAuth: AngularFireAuth, private router: Router) {}
 
-  isLogged: boolean = false;
+    isLogged: boolean = false;
 
   //login method
   login(email: string, password: string): void {
