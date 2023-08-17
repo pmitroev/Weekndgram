@@ -12,9 +12,9 @@
     display: flex;
     margin-bottom: 150px;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly;
     max-width: 1500px;
-    margin-block: 2rem;
+    margin-block: 3em;
     gap: 2rem;
 }
 
