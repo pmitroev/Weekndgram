@@ -1,28 +1,23 @@
 # Weekndgram
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.1.
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+This web application is the place for all fans, of the singer The Weeknd, to share their photos that they have captured throughout his worldwide tour
 
-## Code scaffolding
+- Public Part
+    Everyone can see all posts created by the users
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Private Part
+    When logged in you can see your own posts in the 'Profile' page
+    Only logged in user can create a post
 
-## Build
+- Guest => 
+    POSTS, LOGIN, REGISTER
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- User => 
+    ADD A POST, PROFILE, LOGOUT
 
-## Running unit tests
+* For backend, Firebase was used for authentication, storing all the data for users and the created posts. Deployed also with Firebase.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 # Weekndgram
