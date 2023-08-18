@@ -15,7 +15,7 @@ export class CurrentPostComponent implements OnInit {
   post$!: Observable<Post>;
 
   constructor(
-    private router: ActivatedRoute
+    private router: ActivatedRoute, private data: DataService
   ) {}
 
   ngOnInit(): void {
@@ -40,19 +40,20 @@ export class CurrentPostComponent implements OnInit {
               uid: data['uid'],
             } as Post;
           } else {
-            throw new Error('Document not found'); // Throw an error if document is not found
+            throw new Error('Document not found'); 
           }
         }),
-        filter((post) => !!post) // Filter out undefined values
+        filter((post) => !!post) 
       );
     } else {
-      // Handle the case when id is not available
+      console.log('err');
+      
     }
   }
 
-  //   deletePost(post: Post) {
-  //     if (confirm('Are you sure to delete this record ?') == true) {
-  //       this.data.deletePost(post).then(() => console.log('delete successful'));
-  //     }
-  //   }
+    deletePost(post: Post) {
+      if (confirm('Are you sure to delete this record ?') == true) {
+        this.data.deletePost(post).then(() => console.log('delete successful'));
+      }
+    }
 }
