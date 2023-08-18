@@ -3,7 +3,7 @@
     <div class="navsection menu">
       <ul class="underline">
         <li><a routerLink="/posts">POSTS</a></li>
-        <li><a routerLink="/add-post">ADD A POST</a></li>
+        <li *ngIf="isLoggedIn" ><a routerLink="/add-post">ADD A POST</a></li>
       </ul>
     </div>
     <div class="navsection logo">
