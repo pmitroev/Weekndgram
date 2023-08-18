@@ -9,19 +9,24 @@ import { Router } from '@angular/router';
   styleUrls: ['./posts-list.component.css'],
 })
 export class PostsListComponent implements OnInit {
+  havePosts: boolean = false;
+
   constructor(private data: DataService, private router: Router) {}
-  
-  posts:any = [];
+
+  posts: any = [];
 
   onPostClick(postId: string) {
-    this.router.navigate(['posts', postId])
+    this.router.navigate(['posts', postId]);
   }
 
   refreshPosts() {
     this.data.getPosts().subscribe((res) => {
-      this.posts = res;
-    //   console.log(res);
-      
+      if (res) {
+        this.posts = res;
+        this.havePosts = true;
+      } else {
+        this.havePosts = false;
+      }
     });
   }
 
