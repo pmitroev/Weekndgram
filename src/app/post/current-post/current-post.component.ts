@@ -13,6 +13,8 @@ import { Post } from 'src/app/types/post';
 export class CurrentPostComponent implements OnInit {
   postId: string = '';
   post$!: Observable<Post>;
+  isowner: boolean = false;
+  postUid: string = '';
 
   constructor(
     private router: ActivatedRoute, private data: DataService
@@ -31,6 +33,8 @@ export class CurrentPostComponent implements OnInit {
           const data = documentSnapshot.data();
           if (data) {
             // console.log(data);
+            this.postUid = data['uid'];
+            // console.log(this.postUid);
             
             return {
               _id: this.postId,
@@ -48,6 +52,18 @@ export class CurrentPostComponent implements OnInit {
     } else {
       console.log('err');
       
+    }
+  }
+
+  isOwner() {
+    if (localStorage.getItem('token') && localStorage.getItem('token') == this.postUid) {
+        this.isowner = true;
+        console.log(this.isowner);
+        
+    } else {
+        this.isowner = false;
+        console.log(this.isowner);
+
     }
   }
 
