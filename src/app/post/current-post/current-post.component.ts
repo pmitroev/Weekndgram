@@ -13,12 +13,12 @@ import { Post } from 'src/app/types/post';
 export class CurrentPostComponent implements OnInit {
   postId: string = '';
   post$!: Observable<Post>;
-  isowner: boolean = false;
-  postUid: string = '';
+  isOwner: boolean = false;
+  postUid: string | undefined;
 
-  constructor(
-    private router: ActivatedRoute, private data: DataService
-  ) {}
+  constructor(private router: ActivatedRoute, private data: DataService) {}
+
+  
 
   ngOnInit(): void {
     const id = this.router.snapshot.paramMap.get('id');
@@ -34,8 +34,13 @@ export class CurrentPostComponent implements OnInit {
           if (data) {
             // console.log(data);
             this.postUid = data['uid'];
+            if (this.postUid == localStorage.getItem('token')) {
+                this.isOwner = true;
+            } else {
+                this.isOwner = false;
+            }
             // console.log(this.postUid);
-            
+
             return {
               _id: this.postId,
               place: data['place'],
@@ -44,32 +49,20 @@ export class CurrentPostComponent implements OnInit {
               uid: data['uid'],
             } as Post;
           } else {
-            throw new Error('Document not found'); 
+            throw new Error('Document not found');
           }
         }),
-        filter((post) => !!post) 
+        filter((post) => !!post)
       );
     } else {
       console.log('err');
-      
     }
+    
   }
 
-  isOwner() {
-    if (localStorage.getItem('token') && localStorage.getItem('token') == this.postUid) {
-        this.isowner = true;
-        console.log(this.isowner);
-        
-    } else {
-        this.isowner = false;
-        console.log(this.isowner);
-
+  deletePost(post: Post) {
+    if (confirm('Are you sure to delete this record ?') == true) {
+      this.data.deletePost(post).then(() => console.log('delete successful'));
     }
   }
-
-    deletePost(post: Post) {
-      if (confirm('Are you sure to delete this record ?') == true) {
-        this.data.deletePost(post).then(() => console.log('delete successful'));
-      }
-    }
 }
