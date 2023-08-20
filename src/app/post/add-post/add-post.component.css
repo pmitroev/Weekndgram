@@ -93,3 +93,9 @@
 .container .info span .fa {
   color: #EF3B3A;
 }
+
+h1 {
+    color: #d24600;
+    position: relative;
+    text-align: center;
+}
